@@ -24,14 +24,16 @@ const Header = () => {
       navigate(`/searchResult/${searchQuery}`);
     }
   };
+
   const mobileMenuToggle = () => {
     setMobileMenu(!mobileMenu);
+    console.log(mobileMenu);
   };
+
   const { pathname } = useLocation();
   const pageName = pathname?.split("/")?.filter(Boolean)?.[0];
   return (
     <div className="sticky top-0 z-10 flex flex-row items-center justify-between h-14 px-4 md:px-5 bg-black dark-bg-black">
-
       {loading && <Loader />}
 
       <div className="flex h-5 items-center">
@@ -41,7 +43,7 @@ const Header = () => {
             onClick={mobileMenuToggle}
           >
             {mobileMenu ? (
-              <CgClose className="text-white txt-xl" />
+              <CgClose className="text-white text-xl" />
             ) : (
               <SlMenu className="text-white text-xl" />
             )}
@@ -77,9 +79,10 @@ const Header = () => {
           />
         </div>
 
-        <button className="w-[40px] md:w-[60px] h-8 md:h-10 flex items-center justify-center border border-l-0 border-[#303030] rounded-r-3xl bg-white/[0.1]" 
-                            onClick={() => searchQueryHandler("searchButton")}
-                            >
+        <button
+          className="w-[40px] md:w-[60px] h-8 md:h-10 flex items-center justify-center border border-l-0 border-[#303030] rounded-r-3xl bg-white/[0.1]"
+          onClick={() => searchQueryHandler("searchButton")}
+        >
           <IoIosSearch className="text-white text-xl" />
         </button>
       </div>
@@ -92,12 +95,15 @@ const Header = () => {
           <div className="flex items-center justify-center ml-2 h-10 w-10 rounded-full hover:bg-[#303030]/[0.6]">
             <FiBell className="text-white text-xl cursor-pointer" />
           </div>
-          <div
-            className="flex h-8 w-8 overflow-hidden rounded-full md:ml-4 
+        </div>
+        <div
+          className="flex h-8 w-8 overflow-hidden rounded-full md:ml-4 
           "
-          >
-            <img alt="img" src="https://xsgames.co/randomusers/avatar.php?g=male" />
-          </div>
+        >
+          <img
+            alt="img"
+            src="https://xsgames.co/randomusers/avatar.php?g=male"
+          />
         </div>
       </div>
     </div>

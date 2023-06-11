@@ -11,6 +11,7 @@ const [selectCategories,setSelectCategories] = useState("New");
 const [mobileMenu, setMobileMenu] = useState(false);
 
 
+
 // it will be called when user select any option on side panel
 useEffect(()=>{
     fetchSelectedCategoryData(selectCategories);

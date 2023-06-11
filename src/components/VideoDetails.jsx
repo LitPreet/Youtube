@@ -33,7 +33,7 @@ const VideoDetails = () => {
     setLoading(true);
     fetchDataFromApi(`video/related-contents/?id=${id}`).then((res) => {
       console.log(res);
-      setVideo(res);
+      setRelatedVideos(res);
       setLoading(false);
     });
   };
@@ -49,6 +49,7 @@ const VideoDetails = () => {
               width="100%"
               height="100%"
               style={{ backgroundColor: "#000000" }}
+              playing={true}
             />
           </div>
           <div className="text-white font-bold text-sm md:text-xl line-clamp-2">
@@ -93,6 +94,15 @@ const VideoDetails = () => {
 
             </div>
           </div>
+        </div>
+        <div className='flex flex-col py-6 px-4 overflow-y-auto lg:w-[350px] xl:w-[400px]'>
+          {relatedVideos?.contents?.map((item, index) => {
+            if(item?.type !== 'video') return false;
+            return (
+              <SuggestionVideoCard key={index} video={item?.video}/>
+            )
+          })}
+
         </div>
       </div>
     </div>
